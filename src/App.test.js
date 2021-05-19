@@ -6,6 +6,7 @@ describe("Test button", () => {
 
   // find an element with a role of button and text of 'change to blue'
   const colorButton = screen.getByRole("button", { name: "change to blue" });
+  const checkbox = screen.getByRole("checkbox");
 
   test("button has correct initial color", () => {
     // expect the background color to be red
@@ -21,7 +22,10 @@ describe("Test button", () => {
     expect(colorButton.textContent).toBe("change to red");
   });
 
-  /* test("button turns blue when clicked", () => {
-
-  }); */
+  test("initial conditions", () => {
+    // check that the button starts out enabled
+    expect(colorButton).toBeEnabled();
+    // check that the checkbox starts out unchecked
+    expect(checkbox).not.toBeChecked();
+  });
 });
