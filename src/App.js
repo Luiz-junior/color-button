@@ -13,7 +13,7 @@ function App() {
       <h1 className="title">Click the button to change color</h1>
       <br />
       <button
-        style={{ backgroundColor: buttonColor }}
+        style={{ backgroundColor: disabled ? "gray" : buttonColor }}
         onClick={() => setButtonColor(newButtonColor)}
         disabled={disabled}
         className="change-color-button"

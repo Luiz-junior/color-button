@@ -38,4 +38,28 @@ describe("Test button", () => {
     fireEvent.click(checkbox);
     expect(colorButton).toBeEnabled();
   });
+
+  test("Disabled button has gray background and reverts to red", () => {
+    const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
+    const colorButton = screen.getByRole("button", { name: "Change to blue" });
+    // disable button
+    fireEvent.click(checkbox);
+    expect(colorButton).toHaveStyle("background-color: gray");
+    // re-nable button
+    fireEvent.click(checkbox);
+    expect(colorButton).toHaveStyle("background-color: red");
+  });
+
+  test("Disabled button has gray background and reverts to blue", () => {
+    const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
+    const colorButton = screen.getByRole("button", { name: "Change to blue" });
+    // change button to blue
+    fireEvent.click(colorButton);
+    // disable button
+    fireEvent.click(checkbox);
+    expect(colorButton).toHaveStyle("background-color: gray");
+    // re-nable button
+    fireEvent.click(checkbox);
+    expect(colorButton).toHaveStyle("background-color: blue");
+  });
 });
